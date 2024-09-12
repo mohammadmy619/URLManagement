@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Persistence;
 
-namespace TestLibrary.Fixtures;
+namespace TestUrl.Fixtures;
 
 public abstract class EfDatabaseBaseFixture<TDbContext>
     : IDisposable where TDbContext : DbContext

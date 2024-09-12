@@ -3,7 +3,7 @@ using Persistence;
 using Persistence.Migrations;
 
 
-namespace TestLibrary.Fixtures;
+namespace TestUrl.Fixtures;
 
 public class DbContextFixture : EfDatabaseBaseFixture<UrlManagementDbContext>
 {

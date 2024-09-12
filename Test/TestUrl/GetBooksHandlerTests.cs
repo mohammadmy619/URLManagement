@@ -1,10 +1,10 @@
 ﻿using Application.Urls.GetUrlByIdQuery;
 using Persistence;
 using Persistence.Repositories;
-using TestLibrary.Fixtures;
+using TestUrl.Fixtures;
 using FluentAssertions;
 using System;
-namespace TestLibrary
+namespace TestUrl
 {
 
     public class GetBooksHandlerTests: IClassFixture<DbContextFixture>
