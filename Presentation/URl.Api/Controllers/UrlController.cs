@@ -23,9 +23,9 @@ namespace URl.Api.Controllers
         /// <param name="createBook"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> AddBookCommand(CreateUrlCommand CreateUrl)
+        public async Task<IActionResult> AddBookCommand(CreateUrlCommand url)
         {
-            var Url = await _Mediator.Send(CreateUrl);
+            var Url = await _Mediator.Send(url);
             return Ok(Url);
         }
         
