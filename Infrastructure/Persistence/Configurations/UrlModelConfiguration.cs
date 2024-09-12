@@ -12,6 +12,7 @@ namespace Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Url> builder)
         {
+            builder.Property(p => p.Path).HasMaxLength(400).IsRequired();
             builder.Property(p => p.Name).HasMaxLength(100).IsRequired();
             builder.Property(p => p.description).HasMaxLength(400).IsRequired(false);
         }
