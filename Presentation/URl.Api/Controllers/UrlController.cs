@@ -28,9 +28,6 @@ namespace URl.Api.Controllers
             var Url = await _Mediator.Send(url);
             return Ok(Url);
         }
-        
-
-
 
         /// <summary>
         /// GetUrlById

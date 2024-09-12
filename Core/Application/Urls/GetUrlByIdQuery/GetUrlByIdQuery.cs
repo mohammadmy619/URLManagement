@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Urls.GetUrlByIdQuery
 {
-    public record GetUrlByIdQuery(Guid BookId) : IRequest<GetUrlResponse>
+    public record GetUrlByIdQuery(Guid UrlId) : IRequest<GetUrlResponse>
     {
     }
     

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Persistence
 {
-    public class UrlManagementDbContext:DbContext
+    public class UrlManagementDbContext: DbContext
     {
         public UrlManagementDbContext(DbContextOptions<UrlManagementDbContext> options) : base(options) { }
 

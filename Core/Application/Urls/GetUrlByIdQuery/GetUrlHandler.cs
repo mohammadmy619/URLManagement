@@ -13,12 +13,12 @@ namespace Application.Urls.GetUrlByIdQuery
 
         public async Task<GetUrlResponse> Handle(GetUrlByIdQuery request, CancellationToken cancellationToken)
         {
-            var Url = await _UrlRepository.GetAuthorByIdAsync(request.BookId, cancellationToken);
+            var Url = await _UrlRepository.GetAuthorByIdAsync(request.UrlId, cancellationToken);
 
 
             if (Url is null)
             {
-                throw new GetUrlException(request.BookId);
+                throw new GetUrlException(request.UrlId);
             }
 
             return (GetUrlResponse)Url;
