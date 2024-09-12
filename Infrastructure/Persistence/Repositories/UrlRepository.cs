@@ -22,7 +22,7 @@ namespace Persistence.Repositories
         public async Task<Url?> GetAuthorByIdAsync(Guid UrlId, CancellationToken cancellationToken)
         {
             return await _dbContext.Url
-                  .FirstOrDefaultAsync(author => author.Id == UrlId, cancellationToken);
+                  .FirstOrDefaultAsync(Url => Url.Id == UrlId&& Url.IsDeleted==false, cancellationToken);
         }
 
         public async Task SaveChangesAsync(CancellationToken cancellationToken)
