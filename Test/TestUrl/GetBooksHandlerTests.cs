@@ -3,6 +3,7 @@ using Persistence;
 using Persistence.Repositories;
 using TestLibrary.Fixtures;
 using FluentAssertions;
+using System;
 namespace TestLibrary
 {
 
@@ -16,7 +17,20 @@ namespace TestLibrary
             _fixture = fixture;
         }
 
- 
+        [Fact]
+        public async Task Handle_WhenUrlDoesNotExist_ThrowsException()
+        {
+            // Arrange  
+            var urlRepository = new UrlRepository(_fixture.BuildDbContext(Guid.NewGuid().ToString()));
+            var sut = new GetUrlHandler(urlRepository);
+            var query = new GetUrlByIdQuery(Guid.NewGuid()); // استفاده از یک GUID تصادفی که وجود ندارد  
+
+            // Act & Assert  
+            await Assert.ThrowsAsync<GetUrlException>(async () =>
+            {
+                await sut.Handle(query, CancellationToken.None);
+            });
+        }
 
         [Fact]
         public async Task Handle_WhenUrlExists_ReturnsUrl()
@@ -36,5 +50,6 @@ namespace TestLibrary
             response.Should().BeOfType<GetUrlResponse>();
          
         }
+       
     }
 }
