@@ -3,6 +3,7 @@ using Application.Urls.GetUrlByIdQuery;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using static Application.Urls.GetUrlByIdQuery.GetUrlResponse;
 
 namespace URl.Api.Controllers
 {
@@ -38,9 +39,21 @@ namespace URl.Api.Controllers
         public async Task<IActionResult> GetUrlById([FromRoute] Guid UrlId)
         {
             var res = await _Mediator.Send(new GetUrlByIdQuery(UrlId));
-            return Ok(res);
-        }
 
+            switch (res.Result)
+            {
+                case UrlResult.Success:
+                    return Redirect(res.Path);
+                case UrlResult.NotFound:
+                    return NotFound();
+                case UrlResult.Exception:
+                    return StatusCode(500, "An error occurred while processing your request.");
+                default:
+                    return BadRequest("Unexpected result.");
+            }
+
+
+        }
     }
 }
 
